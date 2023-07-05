@@ -5,7 +5,7 @@ using OpenQA.Selenium.Interactions;
 
 public class Program
 {
-    private static void Main(string[] args)
+    public void Main(string[] args)
     {
         //Login Test
 
