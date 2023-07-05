@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurnUpPortalEditFieldTest", "TurnUpPortalEditFieldTest\TurnUpPortalEditFieldTest.csproj", "{D1374264-E8F6-4650-8099-D39E7C609357}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurnUpPortalTests", "TurnUpPortalTests\TurnUpPortalTests.csproj", "{5A0B7150-D106-447C-BE62-43EFF320C9DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D1374264-E8F6-4650-8099-D39E7C609357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1374264-E8F6-4650-8099-D39E7C609357}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1374264-E8F6-4650-8099-D39E7C609357}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1374264-E8F6-4650-8099-D39E7C609357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A0B7150-D106-447C-BE62-43EFF320C9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A0B7150-D106-447C-BE62-43EFF320C9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A0B7150-D106-447C-BE62-43EFF320C9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A0B7150-D106-447C-BE62-43EFF320C9DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {025A5436-C6CB-4EAC-B342-0B263039F8E2}
+		SolutionGuid = {0737C713-4538-4885-AED7-E2C5238D1275}
 	EndGlobalSection
 EndGlobal

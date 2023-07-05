@@ -38,20 +38,29 @@ public class Program
         DescField.Click();
         DescField.SendKeys("EditTest");
 
-        IWebElement PPUField = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span/input[1]"));
-        PPUField.Click();
+        IWebElement pricePUField = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span/input[1]"));
+        pricePUField.Click();
 
-        IWebElement PriceBox = driver.FindElement(By.Id("Price"));
-        PriceBox.SendKeys("123456");
+        IWebElement priceBox = driver.FindElement(By.Id("Price"));
+        priceBox.SendKeys("123456");
 
-        IWebElement SaveButton = driver.FindElement(By.Id("SaveButton"));
-        SaveButton.Click();
+        IWebElement saveButton = driver.FindElement(By.Id("SaveButton"));
+        saveButton.Click();
         Thread.Sleep(3750);
 
-        IWebElement LastPage = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
-        LastPage.Click();
+        IWebElement lastPage = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
+        lastPage.Click();
 
-        IWebElement CheckNew = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+        IWebElement checkCell = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+
+        if (checkCell.Text == "Test")
+        {
+            Console.WriteLine("New Entry Has Been Created Successfully");
+        }
+        else
+        {
+            Console.WriteLine("The New Entry Has Not Been Created.");
+        }
 
         Thread.Sleep(1500);
 
@@ -79,9 +88,9 @@ public class Program
         IWebElement CheckLastPage = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]"));
         CheckLastPage.Click();
 
-        IWebElement CheckEdit = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
-
-        if (CheckEdit.Text == "$654,321.00")
+        //TEST
+        IWebElement checkEdit = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
+        if (checkEdit.Text == "$654,321.00")
         {
             Console.WriteLine("The Entry Has Been Edited.");
         }
@@ -89,8 +98,25 @@ public class Program
         {
             Console.WriteLine("Entry Has Not Been Changed.");
         }
-        //Notes to self for next time;
-        // DO NOT USE PRICE TAG TO CHECK EDITS, redoing the same test over and over only to find it needs coma's and $ was not fun
-        // Perhaps try changing the name or description fields...
+
+        Thread.Sleep(300);
+
+        //DELETE NEW ENTRY
+        IWebElement DeleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
+        DeleteButton.Click();
+        Thread.Sleep(500);
+        driver.SwitchTo().Alert().Accept();
+
+        //TEST
+
+        if (checkCell.Text == "Test")
+        {
+            Console.WriteLine("Entry Is still Present.");
+        }
+        else
+        {
+            Console.WriteLine("The Entry Has Been Deleted.");
+        }
+
     }
 }
