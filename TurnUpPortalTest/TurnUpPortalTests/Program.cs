@@ -27,28 +27,27 @@ public class Program
 
         //Test
         IWebElement helloHari = driver.FindElement(By.XPath("//*[@id=\"logoutForm\"]/ul/li/a"));
-
         if (helloHari.Text == "Hello hari!")
         {
-            Console.WriteLine("User has logged in successfully.");
+            Console.WriteLine("User has logged in. Test Passed.");
 
         }
         else
         {
-            Console.WriteLine("User has failed to log in");
+            Console.WriteLine("User has not logged in. Test Failed");
         }
 
         //Create New Entry Test
 
         //Navigate to Time and Materials Tab
-        IWebElement AdminButton = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a"));
-        AdminButton.Click();
-        IWebElement TimeMatButton = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
-        TimeMatButton.Click();
+        IWebElement adminButton = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a"));
+        adminButton.Click();
+        IWebElement timeMatButton = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
+        timeMatButton.Click();
 
         //Create New Entry
-        IWebElement NewButton = driver.FindElement(By.XPath("//*[@id=\"container\"]/p/a"));
-        NewButton.Click();
+        IWebElement newButton = driver.FindElement(By.XPath("//*[@id=\"container\"]/p/a"));
+        newButton.Click();
 
         //Add Information to New Entry
         IWebElement codeField = driver.FindElement(By.Id("Code"));
@@ -65,30 +64,36 @@ public class Program
         IWebElement priceBox = driver.FindElement(By.Id("Price"));
         priceBox.SendKeys("123456");
 
+        //Save New Entry
         IWebElement saveButton = driver.FindElement(By.Id("SaveButton"));
         saveButton.Click();
         Thread.Sleep(3750);
 
+        //Navigate to last page of Database
         IWebElement lastPage = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
         lastPage.Click();
 
+        //Test
         IWebElement checkCell = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-
         if (checkCell.Text == "Test")
         {
-            Console.WriteLine("New Entry Has Been Created Successfully");
+            Console.WriteLine("New Entry Has Been Created Successfully. Test Passed.");
         }
         else
         {
-            Console.WriteLine("The New Entry Has Not Been Created.");
+            Console.WriteLine("The New Entry Has Not Been Created. Test Failed.");
         }
 
         Thread.Sleep(1500);
 
+        //Edit Existing Entry Test
+
+        //Click button to Edit Entry
         IWebElement EditButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
         EditButton.Click();
         Thread.Sleep(250);
 
+        //Edit Price data in Entry
         IWebElement EditPrice = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span/input[1]"));
         EditPrice.Click();
 
@@ -101,43 +106,49 @@ public class Program
         EditPriceBox.SendKeys(Keys.Backspace);
         EditPriceBox.SendKeys("654321");
 
+        //Save Changes to Entry
         IWebElement SaveEditButton = driver.FindElement(By.Id("SaveButton"));
         SaveEditButton.Click();
 
         Thread.Sleep(3750);
 
-        IWebElement CheckLastPage = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]"));
-        CheckLastPage.Click();
+        //Navigate to last page of database
+        IWebElement checkLastPage = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]"));
+        checkLastPage.Click();
 
         //TEST
         IWebElement checkEdit = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
         if (checkEdit.Text == "$654,321.00")
         {
-            Console.WriteLine("The Entry Has Been Edited.");
+            Console.WriteLine("The Entry Has Been Edited. Test Passed");
         }
         else
         {
-            Console.WriteLine("Entry Has Not Been Changed.");
+            Console.WriteLine("Entry Has Not Been Changed. Test Failed");
         }
 
         Thread.Sleep(300);
 
-        //DELETE NEW ENTRY
+        //DELETE ENTRY TEST
+
+        //Delete Entry 
         IWebElement DeleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
         DeleteButton.Click();
         Thread.Sleep(500);
         driver.SwitchTo().Alert().Accept();
 
         //TEST
-
         if (checkCell.Text == "Test")
         {
-            Console.WriteLine("Entry Is still Present.");
+            Console.WriteLine("Entry Is still Present. Test Failed");
         }
         else
         {
-            Console.WriteLine("The Entry Has Been Deleted.");
+            Console.WriteLine("The Entry Has Been Deleted. Test Passed");
         }
 
+        driver.Quit();
+
+        Console.WriteLine("Test has been Completed");
     }
 }
